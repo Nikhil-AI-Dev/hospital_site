@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2 class="mb-4 text-primary">📋 Appointment List</h2>
+
+<!-- Filter + Export Buttons -->
+<form method="get" class="mb-3 d-flex gap-2">
+    <input type="text" name="doctor" placeholder="Search doctor..." value="{{ doctor_name }}" class="form-control w-50">
+    <button type="submit" class="btn btn-primary">
+        <i class="bi bi-search"></i> Filter
+    </button>
+    <a href="{% url 'export_appointments' %}" class="btn btn-success">
+        <i class="bi bi-download"></i> Download CSV
+    </a>
+</form>
+
+<!-- Appointment Table -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Doctor</th>
+            <th>Patient</th>
+            <th>Date & Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment.doctor.name }}</td>
+            <td>{{ appointment.patient.name }}</td>
+            <td>{{ appointment.appointment_date }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No appointments found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

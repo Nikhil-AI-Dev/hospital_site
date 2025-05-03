@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2 class="mb-4 text-primary">Welcome to Our Hospital Website</h2>
+
+<div class="d-grid gap-3 col-6 mx-auto">
+    <a class="btn btn-success btn-lg" href="{% url 'book_appointment' %}">
+        <i class="bi bi-calendar-plus"></i> Book Appointment
+    </a>
+    <a class="btn btn-primary btn-lg" href="{% url 'appointment_list' %}">
+        <i class="bi bi-list-ul"></i> View Appointments
+    </a>
+    <a class="btn btn-danger btn-lg" href="{% url 'register_patient' %}">
+        <i class="bi bi-person-plus"></i> Register Patient
+    </a>
+</div>
+{% endblock %}

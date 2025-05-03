@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>📝 Register New Patient</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">
+        <i class="bi bi-check-circle"></i> Book Appointment
+    </button>
+    
+</form>
+
+<p><a class="btn btn-secondary mt-3" href="/">Back to Home</a></p>
+{% endblock %}
