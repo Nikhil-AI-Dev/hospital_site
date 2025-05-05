@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 class Doctor(models.Model):
     name = models.CharField(max_length=100)
@@ -8,14 +9,18 @@ class Doctor(models.Model):
     def __str__(self):
         return f"Dr. {self.name} - {self.specialization}"
 
+
 class Patient(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField()
     gender = models.CharField(max_length=10)
     contact = models.CharField(max_length=15)
+    email = models.EmailField(blank=True, null=True)  # ✅ optional if needed
+    report = CloudinaryField('report', blank=True, null=True)  # ✅ file upload field
 
     def __str__(self):
         return self.name
+
 
 class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
